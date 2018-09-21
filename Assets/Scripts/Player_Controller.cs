@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class Player_Controller : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    Animation anim;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animation>();
+    }
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
