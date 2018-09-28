@@ -7,7 +7,6 @@ public class Player_Controller : MonoBehaviour {
     Animator anim;
     Vector3 scale;
     Vector3 mousepos;
-    bool jumpFlg;
     
 
     private void Awake()
@@ -17,7 +16,6 @@ public class Player_Controller : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        jumpFlg = false;
 	}
 	
 	// Update is called once per frame
@@ -25,8 +23,7 @@ public class Player_Controller : MonoBehaviour {
 
        
         anim.SetBool("is_running", false);
-
-        //float x = Input.GetAxisRaw("Horizontal");
+        
         // デフォルトが右向きの画像の場合
         // スケール値取り出し
         scale = transform.localScale;
@@ -36,22 +33,22 @@ public class Player_Controller : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             mousepos = Input.mousePosition;
-            if ((mousepos.x <= 575 && mousepos.x >= 435) && (mousepos.y >= 186 && mousepos.y <= 435) && (jumpFlg == false))
+            if ((mousepos.x <= 575 && mousepos.x >= 435) && (mousepos.y >= 186 && mousepos.y <= 435))
             {
-                anim.SetBool("is_jump", true);
+                anim.SetTrigger("is_jump");
             }
         }
         if (Input.GetMouseButton(0))
         {
             mousepos = Input.mousePosition;
             //左に移動するときの処理
-            if(mousepos.x <= 510)
+            if(mousepos.x <= 434)
             {
                 anim.SetBool("is_running", true);
                 scale.x = -1;
                 transform.localScale = scale;
 
-            }else if(mousepos.x >=511)//右に移動するときの処理
+            }else if(mousepos.x >=576)//右に移動するときの処理
             {
                 anim.SetBool("is_running", true);
                 scale.x = 1;
@@ -62,7 +59,7 @@ public class Player_Controller : MonoBehaviour {
         else
         {
             anim.SetBool("is_running", false);
-            anim.SetBool("is_jump", false);
+            
         }
 
     }
