@@ -106,4 +106,9 @@ public class Player_Controller : MonoBehaviour {
         }
         
     }
+
+    public void Touseki()
+    {
+        anim.SetTrigger("is_touseki");
+    }
 }
