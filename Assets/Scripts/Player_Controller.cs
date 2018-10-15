@@ -9,13 +9,18 @@ public class Player_Controller : MonoBehaviour {
     Vector3 mousepos;
     Rigidbody2D rb2d;
     Vector3 instPos;
+    Vector3 handPos;
     public GameObject Instpos;
     public GameObject Light;
+    public GameObject Hand;
+    public GameObject Pre_isi;
+    GameObject instIsi;
 
     bool oneJump;
     float scroll = 10f;
     float direction = 0f;
     float timeCount;
+    int speed = 10;
 
     private void Awake()
     {
@@ -42,8 +47,10 @@ public class Player_Controller : MonoBehaviour {
         //仮でPC用操作
         if (Input.GetMouseButtonDown(0))
         {
+            
             mousepos = Input.mousePosition;
-            if ((mousepos.x <= 575 && mousepos.x >= 435) && (mousepos.y >= 186 && mousepos.y <= 435) && (oneJump == false))
+
+            if ((mousepos.x <= 575 && mousepos.x >= 500) && (mousepos.y >= 90 && mousepos.y <= 255) && (oneJump == false))
             {
                 anim.SetTrigger("is_jump");
                 rb2d.velocity = new Vector2(rb2d.velocity.x, 7);
@@ -54,22 +61,25 @@ public class Player_Controller : MonoBehaviour {
         
         if (Input.GetMouseButton(0))
         {
+            mousepos = Input.mousePosition;
             timeCount += Time.deltaTime;
-            if(timeCount >= 0.1)
+            if(timeCount >= 0.1 && !(mousepos.x >= 820 && mousepos.y <= 204))
             {
                 Instantiating();
                 timeCount = 0;
             }
             mousepos = Input.mousePosition;
             //左に移動するときの処理
-            if(mousepos.x <= 434)
+            if(mousepos.x <= 499)
             {
                 anim.SetBool("is_running", true);
                 scale.x = -1;
                 transform.localScale = scale;
                 direction = -0.5f;
-            }else if(mousepos.x >=576)//右に移動するときの処理
+
+            }else if(mousepos.x >=576 && !(mousepos.x >= 820 && mousepos.y <= 204))//右に移動するときの処理
             {
+                    
                 anim.SetBool("is_running", true);
                 scale.x = 1;
                 transform.localScale = scale;
@@ -110,5 +120,16 @@ public class Player_Controller : MonoBehaviour {
     public void Touseki()
     {
         anim.SetTrigger("is_touseki");
+        handPos = Hand.GetComponent<Transform>().position;
+        instIsi = Instantiate(Pre_isi, handPos, Quaternion.identity);
+        if(scale.x == -1)
+        {
+            speed = -10;
+        }
+        else
+        {
+            speed = 10;
+        }
+        instIsi.GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
     }
 }
