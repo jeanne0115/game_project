@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
     public GameObject Player;
+    public GameObject kuriaText;
+    public GameObject SubCamera;
+
 
 	// Use this for initialization
 	void Start () {
@@ -22,5 +25,12 @@ public class GameManager : MonoBehaviour {
     public void PushButtonTouseki()
     {
         Player.GetComponent<Player_Controller>().Touseki();
+    }
+
+    public void Kuria()
+    {
+        SubCamera.SetActive(true);
+        Destroy(Player);
+        kuriaText.SetActive(true);
     }
 }

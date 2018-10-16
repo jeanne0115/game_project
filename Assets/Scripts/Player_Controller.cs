@@ -14,6 +14,7 @@ public class Player_Controller : MonoBehaviour {
     public GameObject Light;
     public GameObject Hand;
     public GameObject Pre_isi;
+    public GameObject Manager;
     GameObject instIsi;
 
     bool oneJump;
@@ -49,8 +50,9 @@ public class Player_Controller : MonoBehaviour {
         {
             
             mousepos = Input.mousePosition;
-
-            if ((mousepos.x <= 575 && mousepos.x >= 500) && (mousepos.y >= 90 && mousepos.y <= 255) && (oneJump == false))
+            Debug.Log(mousepos.x);
+            Debug.Log(mousepos.y);
+            if ((mousepos.x <= 575 && mousepos.x >= 450) && (mousepos.y >= 120 && mousepos.y <= 310) && (oneJump == false))
             {
                 anim.SetTrigger("is_jump");
                 rb2d.velocity = new Vector2(rb2d.velocity.x, 7);
@@ -70,7 +72,7 @@ public class Player_Controller : MonoBehaviour {
             }
             mousepos = Input.mousePosition;
             //左に移動するときの処理
-            if(mousepos.x <= 499)
+            if(mousepos.x <= 449)
             {
                 anim.SetBool("is_running", true);
                 scale.x = -1;
@@ -104,6 +106,12 @@ public class Player_Controller : MonoBehaviour {
                 oneJump = false;
                 Instantiating();
             }
+        }
+
+        //クリア時の処理
+        if(collision.gameObject.tag == "kuria")
+        {
+            Manager.GetComponent<GameManager>().Kuria();
         }
     }
 
