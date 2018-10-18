@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player_Controller : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class Player_Controller : MonoBehaviour {
     Rigidbody2D rb2d;
     Vector3 instPos;
     Vector3 handPos;
+    Transform playerTr;
     public GameObject Instpos;
     public GameObject Light;
     public GameObject Hand;
@@ -37,7 +39,13 @@ public class Player_Controller : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-       
+        playerTr = gameObject.GetComponent<Transform>();
+        if(playerTr.position.y <= -7)
+        {
+            Manager.GetComponent<GameManager>().Rakka();
+        }
+
+
         anim.SetBool("is_running", false);
         
         // デフォルトが右向きの画像の場合
@@ -50,8 +58,6 @@ public class Player_Controller : MonoBehaviour {
         {
             
             mousepos = Input.mousePosition;
-            Debug.Log(mousepos.x);
-            Debug.Log(mousepos.y);
             if ((mousepos.x <= 575 && mousepos.x >= 450) && (mousepos.y >= 120 && mousepos.y <= 310) && (oneJump == false))
             {
                 anim.SetTrigger("is_jump");
@@ -63,6 +69,7 @@ public class Player_Controller : MonoBehaviour {
         
         if (Input.GetMouseButton(0))
         {
+
             mousepos = Input.mousePosition;
             timeCount += Time.deltaTime;
             if(timeCount >= 0.1 && !(mousepos.x >= 820 && mousepos.y <= 204))
