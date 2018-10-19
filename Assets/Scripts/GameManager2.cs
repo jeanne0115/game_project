@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
+public class GameManager2 : MonoBehaviour
+{
 
     public GameObject Player;
     public GameObject kuriaText;
@@ -15,20 +16,22 @@ public class GameManager : MonoBehaviour {
 
     public bool endFlg = false;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         if (Input.GetMouseButtonDown(0))
         {
             if (endFlg == true)
                 SceneManager.LoadScene(0);
         }
-	}
-    
+    }
+
 
     public void PushButtonTouseki()
     {
@@ -42,7 +45,7 @@ public class GameManager : MonoBehaviour {
 
     public void PushReTry()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
 

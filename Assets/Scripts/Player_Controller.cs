@@ -42,7 +42,7 @@ public class Player_Controller : MonoBehaviour {
         playerTr = gameObject.GetComponent<Transform>();
         if(playerTr.position.y <= -7)
         {
-            Manager.GetComponent<GameManager>().Rakka();
+            Manager.GetComponent<GameManager2>().Rakka();
         }
 
 
@@ -129,7 +129,6 @@ public class Player_Controller : MonoBehaviour {
             instPos = Instpos.GetComponent<Transform>().position;
             Instantiate(Light, instPos, Quaternion.identity);
         }
-        
     }
 
     public void Touseki()
