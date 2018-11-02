@@ -20,10 +20,12 @@ public class Player_Controller : MonoBehaviour {
     GameObject instIsi;
 
     bool oneJump;
+    bool one_Light = false;
     float scroll = 10f;
     float direction = 0f;
     float timeCount;
     int speed = 10;
+    public int stage;
 
     private void Awake()
     {
@@ -40,10 +42,26 @@ public class Player_Controller : MonoBehaviour {
 	void Update () {
 
         playerTr = gameObject.GetComponent<Transform>();
-        if(playerTr.position.y <= -7)
+        if (playerTr.position.y <= -7)
         {
-            Manager.GetComponent<GameManager2>().Rakka();
+            if(stage == 1)
+            {
+                Manager.GetComponent<GameManager>().Die();
+            }
+            else if(stage == 2)
+            {
+                Manager.GetComponent<GameManager2>().Die();
+            }
+            else if(stage == 3)
+            {
+
+            }
+            else if(stage == 4)
+            {
+
+            }
         }
+        
 
 
         anim.SetBool("is_running", false);
@@ -58,7 +76,7 @@ public class Player_Controller : MonoBehaviour {
         {
             
             mousepos = Input.mousePosition;
-            if ((mousepos.x <= 575 && mousepos.x >= 450) && (mousepos.y >= 120 && mousepos.y <= 310) && (oneJump == false))
+            if ((mousepos.x <= 575 && mousepos.x >= 450) && (mousepos.y >= 120 && mousepos.y <= 400) && (oneJump == false))
             {
                 anim.SetTrigger("is_jump");
                 rb2d.velocity = new Vector2(rb2d.velocity.x, 7);
@@ -69,7 +87,11 @@ public class Player_Controller : MonoBehaviour {
         
         if (Input.GetMouseButton(0))
         {
-
+            if(one_Light == false)
+            {
+                Instantiating();
+                one_Light = true;
+            }
             mousepos = Input.mousePosition;
             timeCount += Time.deltaTime;
             if(timeCount >= 0.1 && !(mousepos.x >= 820 && mousepos.y <= 204))
@@ -100,6 +122,7 @@ public class Player_Controller : MonoBehaviour {
             anim.SetBool("is_running", false);
             direction = 0f;
             timeCount = 0;
+            one_Light = false;
         }
         rb2d.velocity = new Vector2(scroll * direction, rb2d.velocity.y);
     }
@@ -119,6 +142,27 @@ public class Player_Controller : MonoBehaviour {
         if(collision.gameObject.tag == "kuria")
         {
             Manager.GetComponent<GameManager>().Kuria();
+        }
+
+        //罠などで死ぬ場合の処理
+        if(collision.gameObject.tag == "Die")
+        {
+            if (stage == 1)
+            {
+                Manager.GetComponent<GameManager>().Die();
+            }
+            else if (stage == 2)
+            {
+                Manager.GetComponent<GameManager2>().Die();
+            }
+            else if (stage == 3)
+            {
+
+            }
+            else if (stage == 4)
+            {
+
+            }
         }
     }
 

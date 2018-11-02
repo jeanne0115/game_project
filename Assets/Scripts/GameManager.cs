@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
     public GameObject TitleButton;
     public GameObject RetryButton;
     public GameObject IsiButton;
+    public int stage = 1;
 
     public bool endFlg = false;
 
@@ -55,7 +56,7 @@ public class GameManager : MonoBehaviour {
         IsiButton.SetActive(false);
     }
 
-    public void Rakka()
+    public void Die()
     {
         SubCamera.SetActive(true);
         Destroy(Player);
