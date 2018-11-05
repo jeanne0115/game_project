@@ -11,6 +11,7 @@ public class Damage_Asiba : MonoBehaviour {
     Vector3 instpos;
 
     float deltime;
+    bool one = false;
 
 	// Use this for initialization
 	void Start () {
@@ -30,10 +31,12 @@ public class Damage_Asiba : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.tag == ("Player"))
+        if((col.gameObject.tag == ("Player")) && (one == false))
         {
             instpos = Instpos.GetComponent<Transform>().position;
             instIron = Instantiate(Iron, instpos, Quaternion.identity);
+            one = true;
+
         }
     }
 }

@@ -141,7 +141,22 @@ public class Player_Controller : MonoBehaviour {
         //クリア時の処理
         if(collision.gameObject.tag == "kuria")
         {
-            Manager.GetComponent<GameManager>().Kuria();
+            if (stage == 1)
+            {
+                Manager.GetComponent<GameManager>().Kuria();
+            }
+            else if (stage == 2)
+            {
+                Manager.GetComponent<GameManager2>().Kuria();
+            }
+            else if (stage == 3)
+            {
+
+            }
+            else if (stage == 4)
+            {
+
+            }
         }
 
         //罠などで死ぬ場合の処理
