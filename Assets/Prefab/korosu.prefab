@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212814858169815366}
   - component: {fileID: 61725172390891632}
   - component: {fileID: 50475828115411396}
+  - component: {fileID: 114631793945390290}
   m_Layer: 0
   m_Name: korosu
   m_TagString: Die
@@ -87,6 +88,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.67, y: 1.7}
   m_EdgeRadius: 0
+--- !u!114 &114631793945390290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1580929668425228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7379c9e14df8ff746b458315c88f7a39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PoiLight: {fileID: 1566302093158218, guid: 7974828ecd238534f999ab2b78826e95, type: 2}
 --- !u!212 &212814858169815366
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -102,7 +115,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 57efed22250406349ac6cc6df2727a4b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

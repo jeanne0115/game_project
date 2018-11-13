@@ -54,7 +54,7 @@ public class Player_Controller : MonoBehaviour {
             }
             else if(stage == 3)
             {
-
+                Manager.GetComponent<GameManager3>().Die();
             }
             else if(stage == 4)
             {
@@ -76,7 +76,7 @@ public class Player_Controller : MonoBehaviour {
         {
             
             mousepos = Input.mousePosition;
-            if ((mousepos.x <= 575 && mousepos.x >= 450) && (mousepos.y >= 120 && mousepos.y <= 400) && (oneJump == false))
+            if ((mousepos.x <= 695 && mousepos.x >= 565) && (mousepos.y >= 145 && mousepos.y <= 385) && (oneJump == false))
             {
                 anim.SetTrigger("is_jump");
                 rb2d.velocity = new Vector2(rb2d.velocity.x, 7);
@@ -87,28 +87,32 @@ public class Player_Controller : MonoBehaviour {
         
         if (Input.GetMouseButton(0))
         {
+            
             if(one_Light == false)
             {
                 Instantiating();
                 one_Light = true;
             }
             mousepos = Input.mousePosition;
+            Debug.Log(mousepos.x);
+            Debug.Log(mousepos.y);
+
             timeCount += Time.deltaTime;
-            if(timeCount >= 0.1 && !(mousepos.x >= 820 && mousepos.y <= 204))
+            if(timeCount >= 0.1 && !(mousepos.x >= 1025 && mousepos.y <= 243))
             {
                 Instantiating();
                 timeCount = 0;
             }
             mousepos = Input.mousePosition;
             //左に移動するときの処理
-            if(mousepos.x <= 449)
+            if(mousepos.x <= 564)
             {
                 anim.SetBool("is_running", true);
                 scale.x = -1;
                 transform.localScale = scale;
                 direction = -0.5f;
 
-            }else if(mousepos.x >=576 && !(mousepos.x >= 820 && mousepos.y <= 204))//右に移動するときの処理
+            }else if(mousepos.x >=696 && !(mousepos.x >= 1025 && mousepos.y <= 243))//右に移動するときの処理
             {
                     
                 anim.SetBool("is_running", true);
@@ -151,7 +155,7 @@ public class Player_Controller : MonoBehaviour {
             }
             else if (stage == 3)
             {
-
+                Manager.GetComponent<GameManager3>().Kuria();
             }
             else if (stage == 4)
             {
@@ -172,7 +176,7 @@ public class Player_Controller : MonoBehaviour {
             }
             else if (stage == 3)
             {
-
+                Manager.GetComponent<GameManager3>().Die();
             }
             else if (stage == 4)
             {

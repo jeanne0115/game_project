@@ -6,7 +6,6 @@ public class Damage_Asiba : MonoBehaviour {
 
     public GameObject Instpos;
     public GameObject Iron;
-    GameObject instIron;
 
     Vector3 instpos;
 
@@ -20,12 +19,7 @@ public class Damage_Asiba : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(instIron != null)
-        {
-            deltime += Time.deltaTime;
-            if (deltime >= 3)
-                Destroy(instIron);
-        }
+		
 	}
 
 
@@ -34,7 +28,7 @@ public class Damage_Asiba : MonoBehaviour {
         if((col.gameObject.tag == ("Player")) && (one == false))
         {
             instpos = Instpos.GetComponent<Transform>().position;
-            instIron = Instantiate(Iron, instpos, Quaternion.identity);
+            Instantiate(Iron, instpos, Quaternion.identity);
             one = true;
 
         }

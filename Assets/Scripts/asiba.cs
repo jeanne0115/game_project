@@ -19,7 +19,8 @@ public class asiba : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        //Debug.Log(transform.position.x);
+        //Debug.Log(transform.position.y);
 	}
 	
 	// Update is called once per frame
