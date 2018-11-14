@@ -94,8 +94,8 @@ public class Player_Controller : MonoBehaviour {
                 one_Light = true;
             }
             mousepos = Input.mousePosition;
-            Debug.Log(mousepos.x);
-            Debug.Log(mousepos.y);
+            //Debug.Log(mousepos.x);
+            //Debug.Log(mousepos.y);
 
             timeCount += Time.deltaTime;
             if(timeCount >= 0.1 && !(mousepos.x >= 1025 && mousepos.y <= 243))

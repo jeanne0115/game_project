@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - kuria
   - Die
+  - Isi
   layers:
   - Default
   - TransparentFX
