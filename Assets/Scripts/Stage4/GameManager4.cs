@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameManager3 : MonoBehaviour
+public class GameManager4 : MonoBehaviour
 {
 
     public GameObject Player;
@@ -13,17 +13,6 @@ public class GameManager3 : MonoBehaviour
     public GameObject TitleButton;
     public GameObject RetryButton;
     public GameObject IsiButton;
-
-    public GameObject RightButton;
-    public GameObject LeftButton;
-    public GameObject RightAsiba;
-    public GameObject LeftAsiba;
-    public GameObject Die_Kanban;
-    public GameObject Safe_Kanban;
-
-    public GameObject Kuria_Pos;
-    public GameObject Kuria_asiba;
-
 
     public bool endFlg = false;
 
@@ -41,22 +30,6 @@ public class GameManager3 : MonoBehaviour
             if (endFlg == true)
                 SceneManager.LoadScene(0);
         }
-
-        if((LeftButton.GetComponent<Renderer>().material.color == LeftAsiba.GetComponent<Renderer>().material.color)
-            &&(RightButton.GetComponent<Renderer>().material.color == RightAsiba.GetComponent<Renderer>().material.color))
-        {
-            Die_Kanban.SetActive(false);
-            Safe_Kanban.SetActive(true);
-            Kuria_Pos.SetActive(true);
-            Kuria_asiba.SetActive(true);
-        }
-        else
-        {
-            Die_Kanban.SetActive(true);
-            Safe_Kanban.SetActive(false);
-            Kuria_Pos.SetActive(false);
-            Kuria_asiba.SetActive(false);
-        }
     }
 
 
@@ -72,7 +45,7 @@ public class GameManager3 : MonoBehaviour
 
     public void PushReTry()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
 
 

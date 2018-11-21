@@ -58,7 +58,7 @@ public class Player_Controller : MonoBehaviour {
             }
             else if(stage == 4)
             {
-
+                Manager.GetComponent<GameManager4>().Die();
             }
         }
         
@@ -88,7 +88,7 @@ public class Player_Controller : MonoBehaviour {
         if (Input.GetMouseButton(0))
         {
             
-            if(one_Light == false)
+            if(one_Light == false && !(mousepos.x >= 1025 && mousepos.y <= 243))
             {
                 Instantiating();
                 one_Light = true;
