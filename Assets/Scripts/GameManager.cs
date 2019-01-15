@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
     public GameObject RetryButton;
     public GameObject IsiButton;
     public int stage = 1;
+    
 
     public bool endFlg = false;
 

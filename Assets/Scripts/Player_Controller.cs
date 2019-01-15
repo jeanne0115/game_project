@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class Player_Controller : MonoBehaviour {
 
@@ -9,21 +10,20 @@ public class Player_Controller : MonoBehaviour {
     Vector3 scale;
     Vector3 mousepos;
     Rigidbody2D rb2d;
-    Vector3 instPos;
     Vector3 handPos;
     Transform playerTr;
-    public GameObject Instpos;
-    public GameObject Light;
     public GameObject Hand;
     public GameObject Pre_isi;
     public GameObject Manager;
     GameObject instIsi;
 
+    bool idou = false;
     bool oneJump;
-    bool one_Light = false;
     float scroll = 10f;
     float direction = 0f;
     float timeCount;
+    float ido = 0;
+    float idoo = 0;
     int speed = 10;
     public int stage;
 
@@ -40,6 +40,19 @@ public class Player_Controller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
+
+        if (Input.GetMouseButtonDown(0) && oneJump == false)
+        {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
+            anim.SetTrigger("is_jump");
+            rb2d.velocity = new Vector2(rb2d.velocity.x, 7);
+            oneJump = true;
+        }
 
         playerTr = gameObject.GetComponent<Transform>();
         if (playerTr.position.y <= -7)
@@ -71,8 +84,23 @@ public class Player_Controller : MonoBehaviour {
         scale = transform.localScale;
 
 
+        if (idou == true)
+        {
+            anim.SetBool("is_running", true);
+            scale.x = ido;
+            transform.localScale = scale;
+            direction = idoo;
+        }
+        else
+        {
+            anim.SetBool("is_running", false);
+            direction = 0f;
+            timeCount = 0;
+        }
+        rb2d.velocity = new Vector2(scroll * direction, rb2d.velocity.y);
+
         //仮でPC用操作
-        if (Input.GetMouseButtonDown(0))
+        /*if (Input.GetMouseButtonDown(0))
         {
             
             mousepos = Input.mousePosition;
@@ -80,19 +108,13 @@ public class Player_Controller : MonoBehaviour {
             {
                 anim.SetTrigger("is_jump");
                 rb2d.velocity = new Vector2(rb2d.velocity.x, 7);
-                Instantiating();
                 oneJump = true;
             }
         }
         
         if (Input.GetMouseButton(0))
         {
-            
-            if(one_Light == false && !(mousepos.x >= 1025 && mousepos.y <= 243))
-            {
-                Instantiating();
-                one_Light = true;
-            }
+          
             mousepos = Input.mousePosition;
             //Debug.Log(mousepos.x);
             //Debug.Log(mousepos.y);
@@ -100,7 +122,6 @@ public class Player_Controller : MonoBehaviour {
             timeCount += Time.deltaTime;
             if(timeCount >= 0.1 && !(mousepos.x >= 1025 && mousepos.y <= 243))
             {
-                Instantiating();
                 timeCount = 0;
             }
             mousepos = Input.mousePosition;
@@ -126,10 +147,31 @@ public class Player_Controller : MonoBehaviour {
             anim.SetBool("is_running", false);
             direction = 0f;
             timeCount = 0;
-            one_Light = false;
         }
         rb2d.velocity = new Vector2(scroll * direction, rb2d.velocity.y);
+        */
     }
+
+    public void PushButtonRight()
+    {
+        idou = true;
+        ido = 1;
+        idoo = 0.5f;
+    }
+
+    public void PushButtonLeft()
+    {
+        idou = true;
+        ido = -1;
+        idoo = -0.5f;
+    }
+
+    public void UpButton()
+    {
+        idou = false;
+        ido = 0;
+    }
+   
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -138,7 +180,6 @@ public class Player_Controller : MonoBehaviour {
             if(oneJump == true)
             {
                 oneJump = false;
-                Instantiating();
             }
         }
 
@@ -185,14 +226,7 @@ public class Player_Controller : MonoBehaviour {
         }
     }
 
-    private void Instantiating()
-    {
-        if(oneJump == false)
-        {
-            instPos = Instpos.GetComponent<Transform>().position;
-            Instantiate(Light, instPos, Quaternion.identity);
-        }
-    }
+    
 
     public void Touseki()
     {
