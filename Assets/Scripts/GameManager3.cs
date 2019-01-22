@@ -13,6 +13,8 @@ public class GameManager3 : MonoBehaviour
     public GameObject TitleButton;
     public GameObject RetryButton;
     public GameObject IsiButton;
+    public GameObject Right;
+    public GameObject Left;
 
     public GameObject RightButton;
     public GameObject LeftButton;
@@ -56,6 +58,7 @@ public class GameManager3 : MonoBehaviour
             Safe_Kanban.SetActive(false);
             Kuria_Pos.SetActive(false);
             Kuria_asiba.SetActive(false);
+
         }
     }
 
@@ -83,6 +86,8 @@ public class GameManager3 : MonoBehaviour
         Destroy(Player);
         kuriaText.SetActive(true);
         IsiButton.SetActive(false);
+        Left.SetActive(false);
+        Right.SetActive(false);
     }
 
     public void Die()
@@ -92,6 +97,7 @@ public class GameManager3 : MonoBehaviour
         IsiButton.SetActive(false);
         RetryButton.SetActive(true);
         TitleButton.SetActive(true);
-
+        Left.SetActive(false);
+        Right.SetActive(false);
     }
 }

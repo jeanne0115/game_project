@@ -13,6 +13,8 @@ public class GameManager4 : MonoBehaviour
     public GameObject TitleButton;
     public GameObject RetryButton;
     public GameObject IsiButton;
+    public GameObject Right;
+    public GameObject Left;
 
     public bool endFlg = false;
 
@@ -56,6 +58,8 @@ public class GameManager4 : MonoBehaviour
         Destroy(Player);
         kuriaText.SetActive(true);
         IsiButton.SetActive(false);
+        Left.SetActive(false);
+        Right.SetActive(false);
     }
 
     public void Die()
@@ -65,6 +69,7 @@ public class GameManager4 : MonoBehaviour
         IsiButton.SetActive(false);
         RetryButton.SetActive(true);
         TitleButton.SetActive(true);
-
+        Left.SetActive(false);
+        Right.SetActive(false);
     }
 }

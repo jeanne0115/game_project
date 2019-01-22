@@ -99,57 +99,7 @@ public class Player_Controller : MonoBehaviour {
         }
         rb2d.velocity = new Vector2(scroll * direction, rb2d.velocity.y);
 
-        //仮でPC用操作
-        /*if (Input.GetMouseButtonDown(0))
-        {
-            
-            mousepos = Input.mousePosition;
-            if ((mousepos.x <= 695 && mousepos.x >= 565) && (mousepos.y >= 145 && mousepos.y <= 385) && (oneJump == false))
-            {
-                anim.SetTrigger("is_jump");
-                rb2d.velocity = new Vector2(rb2d.velocity.x, 7);
-                oneJump = true;
-            }
-        }
         
-        if (Input.GetMouseButton(0))
-        {
-          
-            mousepos = Input.mousePosition;
-            //Debug.Log(mousepos.x);
-            //Debug.Log(mousepos.y);
-
-            timeCount += Time.deltaTime;
-            if(timeCount >= 0.1 && !(mousepos.x >= 1025 && mousepos.y <= 243))
-            {
-                timeCount = 0;
-            }
-            mousepos = Input.mousePosition;
-            //左に移動するときの処理
-            if(mousepos.x <= 564)
-            {
-                anim.SetBool("is_running", true);
-                scale.x = -1;
-                transform.localScale = scale;
-                direction = -0.5f;
-
-            }else if(mousepos.x >=696 && !(mousepos.x >= 1025 && mousepos.y <= 243))//右に移動するときの処理
-            {
-                    
-                anim.SetBool("is_running", true);
-                scale.x = 1;
-                transform.localScale = scale;
-                direction = 0.5f;
-            }
-        }
-        else
-        {
-            anim.SetBool("is_running", false);
-            direction = 0f;
-            timeCount = 0;
-        }
-        rb2d.velocity = new Vector2(scroll * direction, rb2d.velocity.y);
-        */
     }
 
     public void PushButtonRight()
